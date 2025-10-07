@@ -4,7 +4,9 @@
   "description": "Jest, Supertest",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "start":"node src/index.js",
+    "test": "jest",
+    "test:json":"jest --json --outputFile=jest-results.json"
   },
   "repository": {
     "type": "git",
