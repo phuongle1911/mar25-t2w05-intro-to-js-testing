@@ -7,4 +7,5 @@ test("Root route works", async () => {
 	// response = await request(app).post("/users/register");
 
 	expect(response.body.message).toBe("Hello, world!");
+	expect(1 + 1).toBe(2);
 })
