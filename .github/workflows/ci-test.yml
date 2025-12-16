@@ -1,0 +1,27 @@
+name: Run Project Tests 
+
+on:
+  # When someone makes a new PR or reopens an old PR, run the tests again
+  pull_request:
+    types: [opened, reopened]
+
+  # When manually requested, run the tests again (useful for workflow development!)
+  workflow_dispatch:
+
+jobs:
+  test_runner:
+    runs-on: ubuntu-latest
+
+    # Not using this but just to show env variables 
+    env: 
+      EXAMPLE_ENV: "bananas"
+
+    steps: 
+      - name: Checkout or clone a copy of the repo to the action runner
+        uses: actions/checkout@v6
+
+      - name: Install dependencies! 
+        run: npm install
+
+      - name: Run the tests
+        run: npm run test
