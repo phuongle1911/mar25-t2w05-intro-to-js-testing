@@ -8,13 +8,25 @@ on:
   # When manually requested, run the tests again (useful for workflow development!)
   workflow_dispatch:
 
+env:
+  MONGODB_URL: mongodb://localhost:27017/example-database-name
+
+
 jobs:
+  
   test_runner:
     runs-on: ubuntu-latest
 
     # Not using this but just to show env variables 
     env: 
       EXAMPLE_ENV: "bananas"
+      
+    services:
+      mongo:
+        image: mongo
+        ports:
+          # exposedPort:internalPort
+          - 27017:27017
 
     steps: 
       - name: Checkout or clone a copy of the repo to the action runner
@@ -28,11 +40,15 @@ jobs:
       
       - name: Log of the example env variable 
         run: echo "${{ env.EXAMPLE_ENV }}"
+
+      - name: Log of MONGODB_URL
+        run: echo "${{ env.MONGODB_URL }}"
   
   second_job:
     runs-on: ubuntu-latest
     env:
       EXAMPLE_ENV: "mango"
+      
     steps:
       - name: Log of the example env variable 
         run: echo "${{ env.EXAMPLE_ENV }}"
