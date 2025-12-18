@@ -1,0 +1,11 @@
+name: Example Callable Workflow
+
+on:
+  workflow_call:
+
+jobs:
+  callable_workflow_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Confirm that the job runs
+        run: echo "Hello, world!"

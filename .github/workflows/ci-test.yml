@@ -66,4 +66,6 @@ jobs:
         run: echo "${{ env.EXAMPLE_ENV }}"
       # you should name your steps! 
       # - run: 
+      - name: Call the callable workflow
+        uses: ./.github/workflows/callable-workflow.yml
 
