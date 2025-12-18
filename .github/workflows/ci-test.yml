@@ -68,6 +68,8 @@ jobs:
       # - run: 
       - name: Checkout or clone a copy of the repo to the action runner
         uses: actions/checkout@v6
-      - name: Call the callable workflow
-        uses: ./.github/workflows/callable-workflow.yml
+  
+  fourth_job:
+    needs: [third_job, test_runner]
+    uses: ./.github/workflows/callable-workflow.yml
 
