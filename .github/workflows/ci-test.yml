@@ -25,3 +25,16 @@ jobs:
 
       - name: Run the tests
         run: npm run test
+      
+      - name: Log of the example env variable 
+        run: echo "${{ env.EXAMPLE_ENV }}"
+  
+  second_job:
+    runs-on: ubuntu-latest
+    env:
+      EXAMPLE_ENV: "mango"
+    steps:
+      - name: Log of the example env variable 
+        run: echo "${{ env.EXAMPLE_ENV }}"
+      # you should name your steps! 
+      # - run: 
