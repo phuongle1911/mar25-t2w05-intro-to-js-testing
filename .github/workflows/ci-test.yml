@@ -48,10 +48,14 @@ jobs:
     runs-on: ubuntu-latest
     env:
       EXAMPLE_ENV: "mango"
-      
+    outputs:
+      favouriteFruit: ${{ steps.favouriteFruitPicker.outputs.result }}
     steps:
       - name: Log of the example env variable 
         run: echo "${{ env.EXAMPLE_ENV }}"
+      - name: Figure out the favourite fruit
+        id: favouriteFruitPicker
+        run: echo "result=${{env.EXAMPLE_ENV}}" >> "$GITHUB_OUTPUT"
       # you should name your steps! 
       # - run: 
 
@@ -68,6 +72,9 @@ jobs:
       # - run: 
       - name: Checkout or clone a copy of the repo to the action runner
         uses: actions/checkout@v6
+
+      - name: Confirm the outputs from second job
+        run: echo "${{needs.second_job.result}} ${{needs.second_job.outputs.favouriteFruit}}"
   
   fourth_job:
     needs: [third_job, test_runner]
