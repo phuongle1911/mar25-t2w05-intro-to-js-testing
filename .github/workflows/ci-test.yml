@@ -15,8 +15,12 @@ env:
 jobs:
   
   test_runner:
-    runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    # runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os}}
+    
     # Not using this but just to show env variables 
     env: 
       EXAMPLE_ENV: "bananas"
