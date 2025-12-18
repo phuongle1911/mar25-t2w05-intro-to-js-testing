@@ -66,6 +66,8 @@ jobs:
         run: echo "${{ env.EXAMPLE_ENV }}"
       # you should name your steps! 
       # - run: 
+      - name: Checkout or clone a copy of the repo to the action runner
+        uses: actions/checkout@v6
       - name: Call the callable workflow
         uses: ./.github/workflows/callable-workflow.yml
 
