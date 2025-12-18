@@ -54,3 +54,16 @@ jobs:
         run: echo "${{ env.EXAMPLE_ENV }}"
       # you should name your steps! 
       # - run: 
+
+  third_job:
+    needs: [second_job]
+    runs-on: ubuntu-latest
+    env:
+      EXAMPLE_ENV: "third"
+      
+    steps:
+      - name: Log of the example env variable 
+        run: echo "${{ env.EXAMPLE_ENV }}"
+      # you should name your steps! 
+      # - run: 
+
