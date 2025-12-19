@@ -24,4 +24,7 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
       
       - name: Show the downloaded files
-        run: ls -la .
+        run: ls -la downloads
+
+      - name: Read an artifact file
+        run: cat downloads/artifact.txt
