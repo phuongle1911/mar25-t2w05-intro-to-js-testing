@@ -24,3 +24,9 @@ jobs:
 
       - name: Check what files are available in the terminal 
         run: ls 
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: example-artifact
+          path: artifact.txt
