@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/index.js",
     "test": "jest",
-    "test:json": "jest --json --outputFile=jest-results.json"
+    "test:json": "jest --json --outputFile=jest-results.json",
+    "test:junit": "jest --ci --reporters=default --reporters=jest-junit"
   },
   "repository": {
     "type": "git",
@@ -26,11 +27,21 @@
   "devDependencies": {
     "jest": "^30.2.0",
     "jest-html-reporters": "^3.1.7",
+    "jest-junit": "^16.0.0",
     "supertest": "^7.1.4"
   },
-  "jest":{
+  "jest": {
     "reporters": [
       "default"
     ]
+  },
+  "jest-junit": {
+    "outputDirectory": "reports",
+    "outputName": "jest-junit.xml",
+    "ancestorSeparator": " › ",
+    "uniqueOutputName": "false",
+    "suiteNameTemplate": "{filepath}",
+    "classNameTemplate": "{classname}",
+    "titleTemplate": "{title}"
   }
 }
